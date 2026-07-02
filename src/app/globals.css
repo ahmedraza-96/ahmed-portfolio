@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Design tokens ──────────────────────────────────────────────────────── */
+
+:root {
+  --bg: #faf7f1;
+  --surface: #ffffff;
+  --surface-2: #f3eee4;
+  --ink: #211d16;
+  --muted: #6f675a;
+  --accent: #c2410c;
+  --accent-contrast: #ffffff;
+  --line: #e6dfd1;
+  --glow: rgba(194, 65, 12, 0.08);
+}
+
+.dark {
+  --bg: #12100d;
+  --surface: #1a1712;
+  --surface-2: #211d16;
+  --ink: #ede7dc;
+  --muted: #9a9184;
+  --accent: #ff7a45;
+  --accent-contrast: #1a0d06;
+  --line: #2b2620;
+  --glow: rgba(255, 122, 69, 0.07);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-line: var(--line);
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-instrument);
+  --font-mono: var(--font-jetbrains);
+}
+
+/* ── Base ───────────────────────────────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Anchored sections clear the fixed navbar */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* ── Atmosphere: dot grid + soft glow ───────────────────────────────────── */
+
+.dot-grid {
+  background-image: radial-gradient(var(--line) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+}
+
+.hero-glow {
+  background: radial-gradient(ellipse 55% 45% at 70% 20%, var(--glow), transparent 70%);
+}
