@@ -152,6 +152,8 @@ export const skillGroups: SkillGroup[] = [
       "RAG Pipelines",
       "AI Agents",
       "Tool Use / Function Calling",
+      "LLM Evals (LLM-as-Judge)",
+      "CI Quality Gates",
       "Chroma",
       "Qdrant",
       "FAISS",
@@ -222,6 +224,23 @@ export const experience: ExperienceItem[] = [
 /* ── Projects ───────────────────────────────────────────────────────────── */
 
 export const projects: Project[] = [
+  {
+    name: "NovaNet Eval Harness",
+    tagline: "AI support agent with production-grade LLM evals",
+    description:
+      "A customer-support RAG agent wrapped in a full evaluation pipeline — 100-case golden dataset, deterministic assertions plus LLM-as-judge grading, hash-keyed response caching, and a GitHub Actions quality gate that blocks bad prompt changes before merge. Baseline evals caught an intermittent prompt-injection vulnerability. Ships with a Next.js metrics dashboard: run trends, per-case judge verdicts, grounded chat and a rendered knowledge base.",
+    tech: [
+      "FastAPI",
+      "LangGraph",
+      "Groq Llama 3.3",
+      "Chroma",
+      "LLM-as-Judge",
+      "GitHub Actions",
+      "Next.js",
+    ],
+    repoUrl: "https://github.com/ahmedraza-96/ai-support-eval",
+    featured: true,
+  },
   {
     name: "Convey AI",
     tagline: "Conversational AI interview agent",
