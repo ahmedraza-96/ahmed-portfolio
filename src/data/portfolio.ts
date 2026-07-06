@@ -238,6 +238,7 @@ export const projects: Project[] = [
       "GitHub Actions",
       "Next.js",
     ],
+    liveUrl: "https://ai-support-eval.vercel.app",
     repoUrl: "https://github.com/ahmedraza-96/ai-support-eval",
     featured: true,
   },
