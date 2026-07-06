@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowUpRight, Github, Lock } from "lucide-react";
 import { projects } from "@/data/portfolio";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -16,7 +17,19 @@ export function Projects() {
               delay={0.1 + (index % 2) * 0.08}
               className={project.featured ? "md:col-span-1" : ""}
             >
-              <article className="group flex h-full flex-col rounded-2xl border border-line bg-surface p-7 transition-all hover:-translate-y-1 hover:border-accent/50">
+              <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface transition-all hover:-translate-y-1 hover:border-accent/50">
+                {project.image && (
+                  <div className="overflow-hidden border-b border-line">
+                    <Image
+                      src={project.image}
+                      alt={`${project.name} screenshot`}
+                      width={1600}
+                      height={900}
+                      className="aspect-video w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                  </div>
+                )}
+                <div className="flex flex-1 flex-col p-7">
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <h3 className="font-display text-xl font-medium text-ink">
@@ -86,6 +99,7 @@ export function Projects() {
                     )}
                   </div>
                 )}
+                </div>
               </article>
             </Reveal>
           ))}

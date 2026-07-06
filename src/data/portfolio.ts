@@ -36,6 +36,8 @@ export interface Project {
   tagline: string;
   description: string;
   tech: string[];
+  /** Screenshot path inside /public (1600×900). Card renders it when set. */
+  image?: string;
   liveUrl?: string;
   /** Label for the liveUrl link. Defaults to "Live site" (e.g. "PyPI", "npm"). */
   liveLabel?: string;
@@ -240,6 +242,7 @@ export const projects: Project[] = [
       "GitHub Actions",
       "Next.js",
     ],
+    image: "/projects/novanet-eval-harness.png",
     liveUrl: "https://ai-support-eval.vercel.app",
     repoUrl: "https://github.com/ahmedraza-96/ai-support-eval",
     featured: true,
@@ -258,6 +261,7 @@ export const projects: Project[] = [
       "GitHub Actions",
       "PyPI",
     ],
+    image: "/projects/psx-mcp-server.png",
     liveUrl: "https://pypi.org/project/psx-mcp-server/",
     liveLabel: "PyPI",
     repoUrl: "https://github.com/ahmedraza-96/psx-mcp-server",
@@ -269,6 +273,7 @@ export const projects: Project[] = [
     description:
       "An AI agent that conducts and evaluates mock interviews autonomously in Urdu and English, with an avatar-based interview mode. Built as my Final Year Project — deployed and live.",
     tech: ["Next.js", "Node.js", "OpenAI API", "REST APIs"],
+    image: "/projects/convey-ai.png",
     liveUrl: "https://www.conveyai.live/",
     repoUrl: "https://github.com/ahmedraza-96/conveyai-backend",
     featured: true,
@@ -289,6 +294,7 @@ export const projects: Project[] = [
       "Terraform",
       "AWS EC2",
     ],
+    image: "/projects/cognos.png",
     liveUrl: "https://cognos-frontend.vercel.app",
     repoUrl: "https://github.com/ahmedraza-96/Cognos-Backend",
     featured: true,
@@ -299,6 +305,7 @@ export const projects: Project[] = [
     description:
       "Connects medicine donors with people in need. Includes an admin panel that moderates donations and user accounts before listings go live. Deployed and accessible online.",
     tech: ["React", "Node.js", "Express", "MongoDB"],
+    image: "/projects/careshare.png",
     liveUrl: "https://careshare-frontend.vercel.app/",
     repoUrl: "https://github.com/ahmedraza-96/Caresharebackend",
   },
@@ -308,6 +315,7 @@ export const projects: Project[] = [
     description:
       "Internal tool for tracking company IT assets and maintenance, with a React dashboard on a FastAPI and MySQL backend. Deployed and accessible online.",
     tech: ["FastAPI", "MySQL", "React.js", "REST APIs"],
+    image: "/projects/it-inventory.png",
     liveUrl: "https://it-inventory-app-main.vercel.app/",
     repoUrl: "https://github.com/ahmedraza-96/it_inventory_app-main",
   },
