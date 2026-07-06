@@ -42,8 +42,8 @@ export function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all ${
         scrolled
-          ? "border-b border-line bg-bg/80 backdrop-blur-md"
-          : "border-b border-transparent bg-transparent"
+          ? "border-b border-line bg-bg/70 shadow-[0_8px_32px_-16px_rgba(0,0,0,0.4)] backdrop-blur-xl"
+          : "border-b border-transparent bg-transparent backdrop-blur-sm"
       }`}
     >
       <a
@@ -70,12 +70,23 @@ export function Navbar() {
             <a
               key={item.href}
               href={item.href}
-              className={`rounded-full px-3.5 py-1.5 font-mono text-[13px] transition-colors ${
+              className={`relative rounded-full px-3.5 py-1.5 font-mono text-[13px] transition-colors ${
                 active === item.href
                   ? "text-accent"
                   : "text-muted hover:text-ink"
               }`}
             >
+              {active === item.href && (
+                <motion.span
+                  layoutId="nav-pill"
+                  className="absolute inset-0 -z-10 rounded-full border border-accent/30 bg-accent/10"
+                  transition={
+                    reduceMotion
+                      ? { duration: 0 }
+                      : { type: "spring", stiffness: 380, damping: 32 }
+                  }
+                />
+              )}
               {item.label}
             </a>
           ))}

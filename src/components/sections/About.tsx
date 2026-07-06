@@ -17,16 +17,15 @@ export function About() {
           ))}
 
           <dl className="grid grid-cols-1 gap-4 pt-4 sm:grid-cols-2">
-            {about.facts.map((fact) => (
-              <div
-                key={fact.label}
-                className="rounded-xl border border-line bg-surface p-4"
-              >
-                <dt className="font-mono text-xs uppercase tracking-widest text-muted">
-                  {fact.label}
-                </dt>
-                <dd className="mt-1 font-medium text-ink">{fact.value}</dd>
-              </div>
+            {about.facts.map((fact, i) => (
+              <Reveal key={fact.label} delay={0.15 + i * 0.08}>
+                <div className="group h-full rounded-xl border border-line bg-surface p-4 transition-all hover:-translate-y-0.5 hover:border-accent/50">
+                  <dt className="font-mono text-xs uppercase tracking-widest text-muted transition-colors group-hover:text-accent">
+                    {fact.label}
+                  </dt>
+                  <dd className="mt-1 font-medium text-ink">{fact.value}</dd>
+                </div>
+              </Reveal>
             ))}
           </dl>
         </Reveal>

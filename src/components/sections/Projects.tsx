@@ -3,6 +3,7 @@ import { ArrowUpRight, Github, Lock } from "lucide-react";
 import { projects } from "@/data/portfolio";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
+import { GlowCard } from "@/components/ui/GlowCard";
 
 export function Projects() {
   return (
@@ -17,7 +18,8 @@ export function Projects() {
               delay={0.1 + (index % 2) * 0.08}
               className={project.featured ? "md:col-span-1" : ""}
             >
-              <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface transition-all hover:-translate-y-1 hover:border-accent/50">
+              <GlowCard className="h-full rounded-2xl">
+              <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface transition-all hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_16px_48px_-24px_var(--glow)]">
                 {project.image && (
                   <div className="overflow-hidden border-b border-line">
                     <Image
@@ -101,6 +103,7 @@ export function Projects() {
                 )}
                 </div>
               </article>
+              </GlowCard>
             </Reveal>
           ))}
         </div>

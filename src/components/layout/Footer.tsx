@@ -23,7 +23,7 @@ export function Footer() {
           <a
             href="#main"
             aria-label="Back to top"
-            className="ml-2 flex h-10 w-10 items-center justify-center rounded-full bg-accent text-accent-contrast transition-transform hover:-translate-y-0.5"
+            className="btn-glow ml-2 flex h-10 w-10 items-center justify-center rounded-full bg-accent text-accent-contrast hover:-translate-y-0.5"
           >
             <ArrowUp className="h-[18px] w-[18px]" />
           </a>

@@ -2,6 +2,7 @@ import { Bot, Cloud, Code2, Workflow } from "lucide-react";
 import { services } from "@/data/portfolio";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
+import { GlowCard } from "@/components/ui/GlowCard";
 
 const ICON_MAP = {
   code: Code2,
@@ -20,7 +21,7 @@ export function Services() {
           const Icon = ICON_MAP[service.icon];
           return (
             <Reveal key={service.title} delay={0.1 + index * 0.08}>
-              <div className="group h-full rounded-2xl border border-line bg-surface p-6 transition-all hover:-translate-y-1 hover:border-accent/50">
+              <GlowCard className="group h-full rounded-2xl border border-line bg-surface p-6 transition-all hover:-translate-y-1 hover:border-accent/50">
                 <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-surface-2 text-accent transition-colors group-hover:bg-accent group-hover:text-accent-contrast">
                   <Icon className="h-5 w-5" />
                 </span>
@@ -30,7 +31,7 @@ export function Services() {
                 <p className="mt-2 text-sm leading-relaxed text-muted">
                   {service.description}
                 </p>
-              </div>
+              </GlowCard>
             </Reveal>
           );
         })}
