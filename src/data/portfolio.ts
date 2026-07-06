@@ -37,6 +37,8 @@ export interface Project {
   description: string;
   tech: string[];
   liveUrl?: string;
+  /** Label for the liveUrl link. Defaults to "Live site" (e.g. "PyPI", "npm"). */
+  liveLabel?: string;
   repoUrl?: string;
   repoUrl2?: string;
   /** Shown as a badge when the project has no public links */
@@ -240,6 +242,25 @@ export const projects: Project[] = [
     ],
     liveUrl: "https://ai-support-eval.vercel.app",
     repoUrl: "https://github.com/ahmedraza-96/ai-support-eval",
+    featured: true,
+  },
+  {
+    name: "PSX MCP Server",
+    tagline: "Published MCP server for LLM agents",
+    description:
+      "An open-source Model Context Protocol server that gives Claude and other LLM agents live Pakistan Stock Exchange data — quotes, indices (KSE-100), company fundamentals, dividends and announcements — as 10 tool-callable endpoints. Built test-first with 78 tests, CI across Python 3.10–3.13 on Linux and Windows, and published to PyPI for one-line install (uvx psx-mcp-server).",
+    tech: [
+      "Python",
+      "MCP (FastMCP)",
+      "httpx",
+      "BeautifulSoup",
+      "pytest",
+      "GitHub Actions",
+      "PyPI",
+    ],
+    liveUrl: "https://pypi.org/project/psx-mcp-server/",
+    liveLabel: "PyPI",
+    repoUrl: "https://github.com/ahmedraza-96/psx-mcp-server",
     featured: true,
   },
   {
