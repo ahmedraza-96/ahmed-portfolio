@@ -61,14 +61,14 @@ export interface Testimonial {
 
 export const site = {
   name: "Ahmed Raza",
-  role: "Full-Stack AI Engineer",
+  role: "AI Engineer",
   /** Used in <title>, OpenGraph and JSON-LD. Set to the deployed domain. */
   url: "https://ahmed-portfolio-jet.vercel.app",
-  title: "Ahmed Raza — Full-Stack AI Engineer",
+  title: "Ahmed Raza — AI Engineer",
   description:
-    "Full-Stack AI Engineer in Karachi, Pakistan. I build and ship complete web applications with Next.js, React and FastAPI, plus production AI features — RAG pipelines, chatbots and tool-using agents.",
+    "AI Engineer in Karachi, Pakistan. I build and ship complete web applications with Next.js, React and FastAPI, plus production AI features — RAG pipelines, chatbots and tool-using agents.",
   keywords: [
-    "Full-Stack AI Engineer",
+    "AI Engineer",
     "Next.js developer",
     "FastAPI",
     "RAG pipelines",
@@ -94,7 +94,7 @@ export const nav: NavItem[] = [
 export const hero = {
   greeting: "Hi, I'm",
   headline: "Ahmed Raza",
-  role: "Full-Stack AI Engineer",
+  role: "AI Engineer",
   tagline:
     "I build and ship complete web applications — and the production AI features inside them. RAG pipelines, chatbots and tool-using agents, from first commit to live deployment.",
   status: "Available for work",
@@ -107,7 +107,7 @@ export const hero = {
 
 export const about = {
   paragraphs: [
-    "I'm a Full-Stack AI Engineer with a BS in Artificial Intelligence from FAST-NUCES. I build complete web applications with Next.js, React and FastAPI, and I ship the AI features that make them useful — RAG pipelines, chatbots and tool-using agents powered by LLM APIs and local LLMs.",
+    "I'm an AI Engineer with a BS in Artificial Intelligence from FAST-NUCES. I build complete web applications with Next.js, React and FastAPI, and I ship the AI features that make them useful — RAG pipelines, chatbots and tool-using agents powered by LLM APIs and local LLMs.",
     "My work runs in production: I deploy with Docker, AWS and Vercel, wire up CI/CD with GitHub Actions, and monitor model quality with LangSmith. Multiple products I've built are live and in use today.",
   ],
   facts: [
@@ -199,7 +199,7 @@ export const skillGroups: SkillGroup[] = [
 
 export const experience: ExperienceItem[] = [
   {
-    role: "Full-Stack AI Engineer",
+    role: "AI Engineer",
     company: "HashOne Global",
     location: "Karachi, Pakistan",
     period: "Jul 2025 — Jun 2026",
@@ -249,8 +249,7 @@ export const projects: Project[] = [
       "An AI agent that conducts and evaluates mock interviews autonomously in Urdu and English, with an avatar-based interview mode. Built as my Final Year Project — deployed and live.",
     tech: ["Next.js", "Node.js", "OpenAI API", "REST APIs"],
     liveUrl: "https://www.conveyai.live/",
-    repoUrl: "https://github.com/ahmedraza-96/conveyai-frontend",
-    repoUrl2: "https://github.com/ahmedraza-96/conveyai-backend",
+    repoUrl: "https://github.com/ahmedraza-96/conveyai-backend",
     featured: true,
   },
   {
@@ -270,8 +269,7 @@ export const projects: Project[] = [
       "AWS EC2",
     ],
     liveUrl: "https://cognos-frontend.vercel.app",
-    repoUrl: "https://github.com/ahmedraza-96/Cognos-Frontend",
-    repoUrl2: "https://github.com/ahmedraza-96/Cognos-Backend",
+    repoUrl: "https://github.com/ahmedraza-96/Cognos-Backend",
     featured: true,
   },
   {
@@ -281,8 +279,7 @@ export const projects: Project[] = [
       "Connects medicine donors with people in need. Includes an admin panel that moderates donations and user accounts before listings go live. Deployed and accessible online.",
     tech: ["React", "Node.js", "Express", "MongoDB"],
     liveUrl: "https://careshare-frontend.vercel.app/",
-    repoUrl: "https://github.com/ahmedraza-96/Caresharefrontend",
-    repoUrl2: "https://github.com/ahmedraza-96/Caresharebackend",
+    repoUrl: "https://github.com/ahmedraza-96/Caresharebackend",
   },
   {
     name: "IT Inventory Management System",
