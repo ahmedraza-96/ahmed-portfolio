@@ -15,13 +15,13 @@ export function Portrait() {
             alt={`${site.name} — portrait`}
             fill
             sizes="(min-width: 1024px) 28vw, 90vw"
-            className="object-cover grayscale transition-[filter] duration-700 hover:grayscale-0"
+            className="object-cover"
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center">
             <span
               aria-hidden
-              className="font-display text-[7rem] font-light italic leading-none text-line-strong"
+              className="font-display text-[7rem] font-light leading-none text-line-strong"
             >
               AR
             </span>

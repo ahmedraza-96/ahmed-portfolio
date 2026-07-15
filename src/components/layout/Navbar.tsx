@@ -65,7 +65,7 @@ export function Navbar() {
         aria-label="Main navigation"
         className="mx-auto flex h-16 max-w-[80rem] items-center justify-between px-6 sm:px-10"
       >
-        <a href="#main" className="font-display text-lg italic tracking-tight text-ink">
+        <a href="#main" className="font-display text-lg font-semibold tracking-tight text-ink">
           {site.name}
         </a>
 

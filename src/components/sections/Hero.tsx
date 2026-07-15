@@ -20,7 +20,7 @@ function StatementLine({ line, accent }: { line: string; accent: string }) {
   return (
     <>
       {before}
-      <em className="italic text-accent">{accent}</em>
+      <em className="not-italic text-accent">{accent}</em>
       {after}
     </>
   );

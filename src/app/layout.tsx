@@ -1,13 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Instrument_Sans, JetBrains_Mono } from "next/font/google";
+import { Bricolage_Grotesque, Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { site, socials } from "@/data/portfolio";
 import "./globals.css";
 
-const fraunces = Fraunces({
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-fraunces",
-  axes: ["opsz", "SOFT", "WONK"],
+  variable: "--font-bricolage",
+  axes: ["opsz"],
 });
 
 const instrumentSans = Instrument_Sans({
@@ -77,7 +77,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${fraunces.variable} ${instrumentSans.variable} ${jetbrainsMono.variable} noise antialiased`}
+        className={`${bricolage.variable} ${instrumentSans.variable} ${jetbrainsMono.variable} noise antialiased`}
       >
         <ThemeProvider>{children}</ThemeProvider>
         <script
