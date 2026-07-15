@@ -5,6 +5,9 @@ import { hero } from "@/data/portfolio";
 import { TextReveal } from "@/components/ui/TextReveal";
 import { EASE } from "@/lib/motion";
 
+/** Hues shared with the first four project rows. */
+const METRIC_HUES = ["#ff6d4d", "#ffb347", "#3ecfb2", "#a78bfa"];
+
 /** Renders a statement line, wrapping the accent word in italic serif + accent color. */
 function StatementLine({ line, accent }: { line: string; accent: string }) {
   if (!line.includes(accent)) return <>{line}</>;
@@ -71,7 +74,7 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Metrics strip */}
+        {/* Metrics strip — each value picks up one of the project hues */}
         <motion.dl {...fade(0.85)} className="grid grid-cols-2 border-t border-line sm:grid-cols-4">
           {hero.metrics.map((m, i) => (
             <div
@@ -80,7 +83,12 @@ export function Hero() {
                 i % 2 === 1 ? "border-l border-line pl-6 sm:pl-8" : ""
               }`}
             >
-              <dd className="font-display text-3xl font-light text-ink sm:text-4xl">{m.value}</dd>
+              <dd
+                className="font-display text-3xl font-light sm:text-4xl"
+                style={{ color: METRIC_HUES[i % METRIC_HUES.length] }}
+              >
+                {m.value}
+              </dd>
               <dt className="text-label mt-2 text-muted">{m.label}</dt>
             </div>
           ))}

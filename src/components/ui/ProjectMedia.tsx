@@ -10,15 +10,13 @@ interface ProjectMediaProps {
   name: string;
   image?: string;
   video?: string;
-  /** "row" = framed media block (case studies); "compact" = bare text trigger. */
-  variant?: "row" | "compact";
 }
 
 /**
  * Project media: hairline-framed poster that opens the narrated demo video
- * in a full-width lightbox. Compact variant renders only a text trigger.
+ * in a full-width lightbox.
  */
-export function ProjectMedia({ name, image, video, variant = "row" }: ProjectMediaProps) {
+export function ProjectMedia({ name, image, video }: ProjectMediaProps) {
   const [open, setOpen] = useState(false);
   const close = useCallback(() => setOpen(false), []);
 
@@ -77,23 +75,6 @@ export function ProjectMedia({ name, image, video, variant = "row" }: ProjectMed
       )}
     </AnimatePresence>
   );
-
-  if (variant === "compact") {
-    if (!video) return null;
-    return (
-      <>
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-          aria-label={`Watch ${name} demo video`}
-          className="text-label link-underline flex items-center gap-1.5 text-accent"
-        >
-          <Play className="h-3 w-3" fill="currentColor" /> Demo
-        </button>
-        {lightbox}
-      </>
-    );
-  }
 
   if (!image) return null;
 
