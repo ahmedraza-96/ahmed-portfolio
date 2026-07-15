@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Instrument_Sans, JetBrains_Mono } from "next/font/google";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import { site, socials } from "@/data/portfolio";
 import "./globals.css";
 
@@ -20,8 +21,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#0c0b09",
-  colorScheme: "dark",
+  themeColor: "#faf5ec",
+  colorScheme: "light dark",
 };
 
 export const metadata: Metadata = {
@@ -74,11 +75,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${fraunces.variable} ${instrumentSans.variable} ${jetbrainsMono.variable} noise antialiased`}
       >
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

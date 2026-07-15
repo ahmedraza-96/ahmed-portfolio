@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { nav, site } from "@/data/portfolio";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { EASE } from "@/lib/motion";
 
 export function Navbar() {
@@ -80,16 +81,20 @@ export function Navbar() {
               {item.label}
             </a>
           ))}
+          <ThemeToggle />
         </div>
 
-        <button
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-          className="text-label flex h-10 items-center text-ink md:hidden"
-        >
-          {open ? "Close" : "Menu"}
-        </button>
+        <div className="flex items-center gap-6 md:hidden">
+          <ThemeToggle />
+          <button
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="text-label flex h-10 items-center text-ink"
+          >
+            {open ? "Close" : "Menu"}
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>

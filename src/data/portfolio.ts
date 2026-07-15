@@ -41,7 +41,7 @@ export interface Project {
   category: string;
   /** One flagship stat surfaced as an accent callout. */
   metric?: string;
-  /** Per-project accent hue (hex) — tints the row's numeral, meta and links. */
+  /** Per-project hue key (see --hue-* in globals.css) — tints the row's numeral, meta and links. */
   accent: string;
   tech: string[];
   /** Screenshot path inside /public (1600×900). Card renders it when set. */
@@ -266,7 +266,7 @@ export const projects: Project[] = [
     tagline: "AI support agent with production-grade LLM evals",
     year: "2025",
     category: "LLM Evals",
-    accent: "#ff6d4d",
+    accent: "coral",
     metric: "100-case golden dataset, CI-gated",
     description:
       "A customer-support RAG agent wrapped in a full evaluation pipeline — 100-case golden dataset, deterministic assertions plus LLM-as-judge grading, hash-keyed response caching, and a GitHub Actions quality gate that blocks bad prompt changes before merge. Baseline evals caught an intermittent prompt-injection vulnerability. Ships with a Next.js metrics dashboard: run trends, per-case judge verdicts, grounded chat and a rendered knowledge base.",
@@ -290,7 +290,7 @@ export const projects: Project[] = [
     tagline: "Published MCP server for LLM agents",
     year: "2025",
     category: "Open Source · MCP",
-    accent: "#ffb347",
+    accent: "amber",
     metric: "78 tests · live on PyPI",
     description:
       "An open-source Model Context Protocol server that gives Claude and other LLM agents live Pakistan Stock Exchange data — quotes, indices (KSE-100), company fundamentals, dividends and announcements — as 10 tool-callable endpoints. Built test-first with 78 tests, CI across Python 3.10–3.13 on Linux and Windows, and published to PyPI for one-line install (uvx psx-mcp-server).",
@@ -315,7 +315,7 @@ export const projects: Project[] = [
     tagline: "Conversational AI interview agent",
     year: "2025–26",
     category: "Voice AI · FYP",
-    accent: "#3ecfb2",
+    accent: "teal",
     metric: "Interviews in Urdu & English",
     description:
       "An AI agent that conducts and evaluates mock interviews autonomously in Urdu and English, with an avatar-based interview mode. Built as my Final Year Project — deployed and live.",
@@ -331,7 +331,7 @@ export const projects: Project[] = [
     tagline: "Full-stack AI agent app (RAG + tools)",
     year: "2025",
     category: "AI Agents · RAG",
-    accent: "#a78bfa",
+    accent: "violet",
     metric: "Per-user vector stores · SSE streaming",
     description:
       "Chat with a tool-using AI agent over your own documents, with built-in web search. JWT auth, per-user Chroma vector stores, Postgres-backed chat memory and token-by-token SSE streaming. Deployed on AWS EC2, provisioned with Terraform.",
@@ -357,7 +357,7 @@ export const projects: Project[] = [
     tagline: "Medicine donation platform (MERN)",
     year: "2024",
     category: "Full-stack",
-    accent: "#f472b6",
+    accent: "rose",
     description:
       "Connects medicine donors with people in need. Includes an admin panel that moderates donations and user accounts before listings go live. Deployed and accessible online.",
     tech: ["React", "Node.js", "Express", "MongoDB"],
@@ -371,7 +371,7 @@ export const projects: Project[] = [
     tagline: "Asset tracking for company IT",
     year: "2024",
     category: "Internal tool",
-    accent: "#5eb0ff",
+    accent: "sky",
     description:
       "Internal tool for tracking company IT assets and maintenance, with a React dashboard on a FastAPI and MySQL backend. Deployed and accessible online.",
     tech: ["FastAPI", "MySQL", "React.js", "REST APIs"],
@@ -385,7 +385,7 @@ export const projects: Project[] = [
     tagline: "Grounded Q&A over long documents",
     year: "2024",
     category: "Client work",
-    accent: "#b5e853",
+    accent: "lime",
     description:
       "A chatbot that answers questions over long documents — embeds the text into a FAISS vector store, retrieves the closest matches, and serves grounded answers through a FastAPI service.",
     tech: ["Python", "LangChain", "OpenAI", "FAISS", "FastAPI"],

@@ -5,8 +5,13 @@ import { hero } from "@/data/portfolio";
 import { TextReveal } from "@/components/ui/TextReveal";
 import { EASE } from "@/lib/motion";
 
-/** Hues shared with the first four project rows. */
-const METRIC_HUES = ["#ff6d4d", "#ffb347", "#3ecfb2", "#a78bfa"];
+/** Hues shared with the first four project rows (theme-aware CSS vars). */
+const METRIC_HUES = [
+  "var(--hue-coral)",
+  "var(--hue-amber)",
+  "var(--hue-teal)",
+  "var(--hue-violet)",
+];
 
 /** Renders a statement line, wrapping the accent word in italic serif + accent color. */
 function StatementLine({ line, accent }: { line: string; accent: string }) {

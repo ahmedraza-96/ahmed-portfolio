@@ -16,7 +16,7 @@ interface CaseStudyRowProps {
 export function CaseStudyRow({ project, index }: CaseStudyRowProps) {
   const flipped = index % 2 === 1;
   const numeral = String(index + 1).padStart(2, "0");
-  const accentStyle = { "--row-accent": project.accent } as CSSProperties;
+  const accentStyle = { "--row-accent": `var(--hue-${project.accent})` } as CSSProperties;
 
   return (
     <article className="border-t border-line py-14 lg:py-20" style={accentStyle}>

@@ -1,8 +1,31 @@
 @import "tailwindcss";
 
-/* ── Design tokens — single editorial dark theme ────────────────────────── */
+/* ── Design tokens — bright editorial (default) + dark option ───────────── */
 
 :root {
+  --bg: #faf5ec;
+  --surface: #ffffff;
+  --surface-2: #f2ecdf;
+  --ink: #201c15;
+  --muted: #6e6759;
+  --accent: #e04e26;
+  --accent-hi: #b83c17;
+  --accent-contrast: #ffffff;
+  --line: #e6ddca;
+  --line-strong: #cabfa6;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Per-project hues — deepened for legibility on the bright paper */
+  --hue-coral: #d9481f;
+  --hue-amber: #b57a00;
+  --hue-teal: #0c8f75;
+  --hue-violet: #6d4fd2;
+  --hue-rose: #ce2f7b;
+  --hue-sky: #1b6fd0;
+  --hue-lime: #5d8a10;
+}
+
+.dark {
   --bg: #0c0b09;
   --surface: #12110e;
   --surface-2: #191713;
@@ -13,7 +36,15 @@
   --accent-contrast: #180b06;
   --line: #26231d;
   --line-strong: #3b362c;
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Vivid hues read best against near-black */
+  --hue-coral: #ff6d4d;
+  --hue-amber: #ffb347;
+  --hue-teal: #3ecfb2;
+  --hue-violet: #a78bfa;
+  --hue-rose: #f472b6;
+  --hue-sky: #5eb0ff;
+  --hue-lime: #b5e853;
 }
 
 @theme inline {
@@ -49,6 +80,7 @@ body {
   color: var(--ink);
   font-family: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
@@ -164,7 +196,8 @@ section[id] {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .link-underline {
+  .link-underline,
+  body {
     transition: none;
   }
 }
