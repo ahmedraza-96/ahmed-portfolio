@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
-import { Instrument_Sans, JetBrains_Mono, Space_Grotesk } from "next/font/google";
-import { ThemeProvider } from "@/components/ThemeProvider";
+import type { Metadata, Viewport } from "next";
+import { Fraunces, Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import { site, socials } from "@/data/portfolio";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  variable: "--font-grotesk",
+  variable: "--font-fraunces",
+  axes: ["opsz", "SOFT", "WONK"],
 });
 
 const instrumentSans = Instrument_Sans({
@@ -18,6 +18,11 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains",
 });
+
+export const viewport: Viewport = {
+  themeColor: "#0c0b09",
+  colorScheme: "dark",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -69,13 +74,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body
-        className={`${spaceGrotesk.variable} ${instrumentSans.variable} ${jetbrainsMono.variable} noise antialiased`}
+        className={`${fraunces.variable} ${instrumentSans.variable} ${jetbrainsMono.variable} noise antialiased`}
       >
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        {children}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

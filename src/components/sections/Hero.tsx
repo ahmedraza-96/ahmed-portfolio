@@ -1,118 +1,91 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowDown, Download, MapPin } from "lucide-react";
-import { hero, socials } from "@/data/portfolio";
-import { SocialIcon } from "@/components/ui/SocialIcon";
+import { hero } from "@/data/portfolio";
+import { TextReveal } from "@/components/ui/TextReveal";
+import { EASE } from "@/lib/motion";
 
-const EASE = [0.21, 0.47, 0.32, 0.98] as const;
+/** Renders a statement line, wrapping the accent word in italic serif + accent color. */
+function StatementLine({ line, accent }: { line: string; accent: string }) {
+  if (!line.includes(accent)) return <>{line}</>;
+  const [before, after] = line.split(accent);
+  return (
+    <>
+      {before}
+      <em className="italic text-accent">{accent}</em>
+      {after}
+    </>
+  );
+}
 
 export function Hero() {
   const reduceMotion = useReducedMotion();
 
-  const item = (i: number) => ({
-    initial: reduceMotion ? false : { opacity: 0, y: 28, filter: "blur(6px)" },
-    animate: { opacity: 1, y: 0, filter: "blur(0px)" },
-    transition: { duration: 0.7, delay: 0.15 + i * 0.12, ease: EASE },
+  const fade = (delay: number) => ({
+    initial: reduceMotion ? false : { opacity: 0, y: 16 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.8, delay, ease: EASE },
   });
 
   return (
-    <section
-      id="hero"
-      className="relative flex min-h-screen items-center overflow-hidden pt-16"
-    >
-      <div className="dot-grid absolute inset-0" aria-hidden="true" />
-      <div className="hero-glow absolute inset-0" aria-hidden="true" />
-      <div className="orb orb-a -top-40 right-[-10%]" aria-hidden="true" />
-      <div className="orb orb-b bottom-[-20%] left-[-8%]" aria-hidden="true" />
-
-      <div className="relative mx-auto w-full max-w-6xl px-5 py-24 sm:px-8">
-        <motion.p
-          {...item(0)}
-          className="flex items-center gap-2 font-mono text-sm text-muted"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-          </span>
-          {hero.status}
-          <span aria-hidden="true" className="text-line">
-            |
-          </span>
-          <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
-          {hero.location}
-        </motion.p>
-
-        {/* Transforms live on this wrapper — putting them on descendants of the
-            gradient span breaks background-clip:text in Chrome. */}
+    <section id="hero" className="relative flex min-h-svh flex-col justify-end pt-24">
+      <div className="mx-auto w-full max-w-[80rem] px-6 sm:px-10">
+        {/* Eyebrow row */}
         <motion.div
-          initial={
-            reduceMotion
-              ? false
-              : { opacity: 0, y: 48, scale: 0.97, filter: "blur(12px)" }
-          }
-          animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
-          transition={{ duration: 0.9, delay: 0.25, ease: EASE }}
+          {...fade(0.1)}
+          className="text-label flex flex-wrap items-center justify-between gap-3 border-b border-line pb-5 text-muted"
         >
-          <h1 className="mt-6 font-display text-5xl font-semibold leading-[1.02] tracking-tight sm:text-7xl md:text-8xl">
-            <span className="gradient-text inline-block pb-2">{hero.headline}</span>
-          </h1>
+          <span>{hero.eyebrow}</span>
+          <span className="flex items-center gap-2 text-accent">
+            <span aria-hidden className="inline-block h-1.5 w-1.5 rounded-full bg-accent" />
+            {hero.status}
+          </span>
         </motion.div>
 
-        <motion.p
-          {...item(2)}
-          className="mt-4 font-mono text-base text-accent sm:text-lg"
-        >
-          {"//"} {hero.role}
-        </motion.p>
-
-        <motion.p
-          {...item(3)}
-          className="mt-6 max-w-2xl text-lg leading-relaxed text-muted"
-        >
-          {hero.tagline}
-        </motion.p>
-
-        <motion.div {...item(4)} className="mt-10 flex flex-wrap items-center gap-4">
-          <a
-            href={hero.primaryCta.href}
-            className="btn-glow group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-medium text-accent-contrast hover:-translate-y-0.5"
-          >
-            {hero.primaryCta.label}
-            <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
-          </a>
-          <a
-            href={hero.secondaryCta.href}
-            download
-            className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/50 px-6 py-3 font-medium text-ink backdrop-blur-sm transition-colors hover:border-accent hover:text-accent"
-          >
-            <Download className="h-4 w-4" />
-            {hero.secondaryCta.label}
-          </a>
-        </motion.div>
-
-        <motion.div {...item(5)} className="mt-12 flex items-center gap-3">
-          {socials.map((social) => (
-            <SocialIcon key={social.label} social={social} />
+        {/* Statement */}
+        <TextReveal
+          as="h1"
+          className="text-display-xl mt-10 text-ink sm:mt-14"
+          delay={0.25}
+          lines={hero.statement.map((line) => (
+            <StatementLine key={line} line={line} accent={hero.statementAccent} />
           ))}
-        </motion.div>
-      </div>
+        />
 
-      {!reduceMotion && (
-        <motion.a
-          href="#about"
-          aria-label="Scroll to About"
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted transition-colors hover:text-accent"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, y: [0, 8, 0] }}
-          transition={{
-            opacity: { delay: 1.6, duration: 0.6 },
-            y: { delay: 1.6, duration: 1.8, repeat: Infinity, ease: "easeInOut" },
-          }}
-        >
-          <ArrowDown className="h-5 w-5" />
-        </motion.a>
-      )}
+        {/* Tagline + CTAs */}
+        <div className="mt-10 flex flex-col gap-8 pb-14 sm:mt-12 sm:flex-row sm:items-end sm:justify-between sm:pb-16">
+          <motion.p {...fade(0.55)} className="max-w-[52ch] text-[17px] leading-[1.75] text-muted">
+            {hero.tagline}
+          </motion.p>
+          <motion.div {...fade(0.7)} className="flex shrink-0 items-center gap-8">
+            <a href={hero.primaryCta.href} className="link-underline is-drawn text-ink">
+              {hero.primaryCta.label} ↓
+            </a>
+            <a
+              href={hero.secondaryCta.href}
+              download
+              className="link-underline is-drawn text-accent"
+            >
+              {hero.secondaryCta.label} ↗
+            </a>
+          </motion.div>
+        </div>
+
+        {/* Metrics strip */}
+        <motion.dl {...fade(0.85)} className="grid grid-cols-2 border-t border-line sm:grid-cols-4">
+          {hero.metrics.map((m, i) => (
+            <div
+              key={m.label}
+              className={`py-6 pr-6 sm:py-8 ${i > 0 ? "sm:border-l sm:border-line sm:pl-8" : ""} ${
+                i % 2 === 1 ? "border-l border-line pl-6 sm:pl-8" : ""
+              }`}
+            >
+              <dd className="font-display text-3xl font-light text-ink sm:text-4xl">{m.value}</dd>
+              <dt className="text-label mt-2 text-muted">{m.label}</dt>
+            </div>
+          ))}
+        </motion.dl>
+      </div>
     </section>
   );
 }
