@@ -35,6 +35,12 @@ export interface Project {
   name: string;
   tagline: string;
   description: string;
+  /** Year shipped — shown in the case-study meta line. */
+  year: string;
+  /** Editorial category label, e.g. "LLM Evals", "Open Source · MCP". */
+  category: string;
+  /** One flagship stat surfaced as an accent callout. */
+  metric?: string;
   tech: string[];
   /** Screenshot path inside /public (1600×900). Card renders it when set. */
   image?: string;
@@ -50,17 +56,9 @@ export interface Project {
   featured?: boolean;
 }
 
-export interface Service {
+export interface Capability {
   title: string;
   description: string;
-  /** Icon key rendered by the Services component: see ICON_MAP in Services.tsx */
-  icon: "code" | "bot" | "workflow" | "cloud";
-}
-
-export interface Testimonial {
-  quote: string;
-  author: string;
-  role: string;
 }
 
 /* ── Site & SEO ─────────────────────────────────────────────────────────── */
@@ -87,26 +85,32 @@ export const site = {
 };
 
 export const nav: NavItem[] = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
+  { label: "Profile", href: "#about" },
+  { label: "Stack", href: "#skills" },
   { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Services", href: "#services" },
+  { label: "Work", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ];
 
 /* ── Hero ───────────────────────────────────────────────────────────────── */
 
 export const hero = {
-  greeting: "Hi, I'm",
-  headline: "Ahmed Raza",
-  role: "AI Engineer",
+  eyebrow: "Ahmed Raza — AI Engineer, Karachi",
+  /** Each entry renders as one masked line of the statement. */
+  statement: ["I build AI products", "that actually ship."],
+  /** Word inside the statement rendered in italic + accent. */
+  statementAccent: "ship.",
   tagline:
-    "I build and ship complete web applications — and the production AI features inside them. RAG pipelines, chatbots and tool-using agents, from first commit to live deployment.",
+    "Complete web applications and the production AI inside them — RAG pipelines, tool-using agents and eval harnesses, from first commit to live deployment.",
   status: "Available for work",
-  location: "Karachi, Pakistan",
-  primaryCta: { label: "View Projects", href: "#projects" },
-  secondaryCta: { label: "Download Resume", href: "/resume.pdf" },
+  metrics: [
+    { value: "06", label: "Products live" },
+    { value: "01", label: "PyPI package" },
+    { value: "78", label: "Tests, CI-gated" },
+    { value: "’26", label: "BS AI, FAST-NUCES" },
+  ],
+  primaryCta: { label: "Selected work", href: "#projects" },
+  secondaryCta: { label: "Résumé", href: "/resume.pdf" },
 };
 
 /* ── About ──────────────────────────────────────────────────────────────── */
@@ -129,6 +133,31 @@ export const about = {
     detail:
       "Coursework in AI, Machine Learning, Deep Learning, NLP, Computer Vision, DSA, Databases and Software Engineering. Final Year Project: Convey AI — a conversational AI interview agent.",
   },
+  /** Headshot path inside /public (3:4 portrait). Leave undefined to render the monogram placeholder. */
+  photo: undefined as string | undefined,
+  photoCaption: "Karachi · 24.86°N 67.00°E",
+  capabilities: [
+    {
+      title: "Full-stack web development",
+      description:
+        "Complete applications with Next.js, React and FastAPI — REST APIs, auth, databases and clean, responsive UIs.",
+    },
+    {
+      title: "AI chatbots & RAG systems",
+      description:
+        "Chatbots grounded in your documents — chunking, embeddings, vector search and retrieval tuning for sourced answers.",
+    },
+    {
+      title: "AI agent development",
+      description:
+        "Tool-using agents built with LangChain and LangGraph that execute multi-step tasks via APIs and webhooks.",
+    },
+    {
+      title: "Cloud deployment & DevOps",
+      description:
+        "Production deployments with Docker, AWS and Vercel — Terraform provisioning, CI/CD and LLM observability.",
+    },
+  ] as Capability[],
 };
 
 /* ── Skills ─────────────────────────────────────────────────────────────── */
@@ -233,6 +262,9 @@ export const projects: Project[] = [
   {
     name: "NovaNet Eval Harness",
     tagline: "AI support agent with production-grade LLM evals",
+    year: "2025",
+    category: "LLM Evals",
+    metric: "100-case golden dataset, CI-gated",
     description:
       "A customer-support RAG agent wrapped in a full evaluation pipeline — 100-case golden dataset, deterministic assertions plus LLM-as-judge grading, hash-keyed response caching, and a GitHub Actions quality gate that blocks bad prompt changes before merge. Baseline evals caught an intermittent prompt-injection vulnerability. Ships with a Next.js metrics dashboard: run trends, per-case judge verdicts, grounded chat and a rendered knowledge base.",
     tech: [
@@ -253,6 +285,9 @@ export const projects: Project[] = [
   {
     name: "PSX MCP Server",
     tagline: "Published MCP server for LLM agents",
+    year: "2025",
+    category: "Open Source · MCP",
+    metric: "78 tests · live on PyPI",
     description:
       "An open-source Model Context Protocol server that gives Claude and other LLM agents live Pakistan Stock Exchange data — quotes, indices (KSE-100), company fundamentals, dividends and announcements — as 10 tool-callable endpoints. Built test-first with 78 tests, CI across Python 3.10–3.13 on Linux and Windows, and published to PyPI for one-line install (uvx psx-mcp-server).",
     tech: [
@@ -274,6 +309,9 @@ export const projects: Project[] = [
   {
     name: "Convey AI",
     tagline: "Conversational AI interview agent",
+    year: "2025–26",
+    category: "Voice AI · FYP",
+    metric: "Interviews in Urdu & English",
     description:
       "An AI agent that conducts and evaluates mock interviews autonomously in Urdu and English, with an avatar-based interview mode. Built as my Final Year Project — deployed and live.",
     tech: ["Next.js", "Node.js", "OpenAI API", "REST APIs"],
@@ -286,6 +324,9 @@ export const projects: Project[] = [
   {
     name: "Cognos",
     tagline: "Full-stack AI agent app (RAG + tools)",
+    year: "2025",
+    category: "AI Agents · RAG",
+    metric: "Per-user vector stores · SSE streaming",
     description:
       "Chat with a tool-using AI agent over your own documents, with built-in web search. JWT auth, per-user Chroma vector stores, Postgres-backed chat memory and token-by-token SSE streaming. Deployed on AWS EC2, provisioned with Terraform.",
     tech: [
@@ -308,6 +349,8 @@ export const projects: Project[] = [
   {
     name: "CareShare",
     tagline: "Medicine donation platform (MERN)",
+    year: "2024",
+    category: "Full-stack",
     description:
       "Connects medicine donors with people in need. Includes an admin panel that moderates donations and user accounts before listings go live. Deployed and accessible online.",
     tech: ["React", "Node.js", "Express", "MongoDB"],
@@ -319,6 +362,8 @@ export const projects: Project[] = [
   {
     name: "IT Inventory Management System",
     tagline: "Asset tracking for company IT",
+    year: "2024",
+    category: "Internal tool",
     description:
       "Internal tool for tracking company IT assets and maintenance, with a React dashboard on a FastAPI and MySQL backend. Deployed and accessible online.",
     tech: ["FastAPI", "MySQL", "React.js", "REST APIs"],
@@ -330,6 +375,8 @@ export const projects: Project[] = [
   {
     name: "RAG Document Parsing Chatbot",
     tagline: "Grounded Q&A over long documents",
+    year: "2024",
+    category: "Client work",
     description:
       "A chatbot that answers questions over long documents — embeds the text into a FAISS vector store, retrieves the closest matches, and serves grounded answers through a FastAPI service.",
     tech: ["Python", "LangChain", "OpenAI", "FAISS", "FastAPI"],
@@ -337,55 +384,16 @@ export const projects: Project[] = [
   },
 ];
 
-/* ── Services ───────────────────────────────────────────────────────────── */
-
-export const services: Service[] = [
-  {
-    title: "Full-Stack Web Development",
-    description:
-      "Complete web applications with Next.js, React and FastAPI — REST APIs, auth, databases and clean, responsive UIs.",
-    icon: "code",
-  },
-  {
-    title: "AI Chatbots & RAG Systems",
-    description:
-      "Chatbots grounded in your documents: chunking, embeddings, vector search and retrieval tuning for accurate, sourced answers.",
-    icon: "bot",
-  },
-  {
-    title: "AI Agent Development",
-    description:
-      "Tool-using agents built with LangChain and LangGraph that execute multi-step tasks, integrated via APIs and webhooks.",
-    icon: "workflow",
-  },
-  {
-    title: "Cloud Deployment & DevOps",
-    description:
-      "Production deployments with Docker, AWS and Vercel — Terraform provisioning, CI/CD pipelines and LLM observability.",
-    icon: "cloud",
-  },
-];
-
-/* ── Testimonials ───────────────────────────────────────────────────────── */
-/*  The section is hidden while this array is empty. Add entries like:
-    { quote: "…", author: "Jane Doe", role: "CTO, Acme" }                    */
-
-export const testimonials: Testimonial[] = [];
-
 /* ── Contact ────────────────────────────────────────────────────────────── */
 
 export const contact = {
-  heading: "Let's build something",
+  heading: "Have something worth shipping?",
   blurb:
-    "Have a project in mind, or want to talk about AI features for your product? Send a message — I usually reply within a day.",
+    "I usually reply within a day. Tell me about the product, the problem, or the role — email works best.",
   email: "ahmedrz.amjad@gmail.com",
   phone: "+92 330 7051591",
   location: "Karachi, Pakistan",
-  /**
-   * Get a free access key at https://web3forms.com (takes 1 minute).
-   * The form is disabled with a helpful message until this is replaced.
-   */
-  web3formsAccessKey: "YOUR_WEB3FORMS_ACCESS_KEY",
+  availability: "Currently open to full-time AI engineering roles — remote or Karachi.",
 };
 
 export const socials: Social[] = [

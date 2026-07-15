@@ -4,18 +4,21 @@ import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Play, X } from "lucide-react";
+import { EASE } from "@/lib/motion";
 
 interface ProjectMediaProps {
   name: string;
   image?: string;
   video?: string;
+  /** "row" = framed media block (case studies); "compact" = bare text trigger. */
+  variant?: "row" | "compact";
 }
 
 /**
- * Project card media block: the screenshot, plus — when a demo video exists —
- * a play-button overlay that opens the narrated demo in a full-width lightbox.
+ * Project media: hairline-framed poster that opens the narrated demo video
+ * in a full-width lightbox. Compact variant renders only a text trigger.
  */
-export function ProjectMedia({ name, image, video }: ProjectMediaProps) {
+export function ProjectMedia({ name, image, video, variant = "row" }: ProjectMediaProps) {
   const [open, setOpen] = useState(false);
   const close = useCallback(() => setOpen(false), []);
 
@@ -30,6 +33,68 @@ export function ProjectMedia({ name, image, video }: ProjectMediaProps) {
     };
   }, [open, close]);
 
+  const lightbox = video && (
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25, ease: EASE }}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-bg/90 p-4 backdrop-blur-sm sm:p-8"
+          onClick={close}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${name} demo video`}
+        >
+          <motion.div
+            initial={{ scale: 0.97, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.97, opacity: 0 }}
+            transition={{ duration: 0.3, ease: EASE }}
+            className="relative w-full max-w-5xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={close}
+              aria-label="Close video"
+              className="text-label absolute -top-11 right-0 flex h-9 items-center gap-2 text-muted transition-colors hover:text-ink"
+            >
+              Close <X className="h-4 w-4" />
+            </button>
+            <video
+              controls
+              autoPlay
+              playsInline
+              preload="none"
+              poster={image}
+              src={video}
+              className="aspect-video w-full rounded-sm border border-line bg-black"
+            />
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+
+  if (variant === "compact") {
+    if (!video) return null;
+    return (
+      <>
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          aria-label={`Watch ${name} demo video`}
+          className="text-label link-underline flex items-center gap-1.5 text-accent"
+        >
+          <Play className="h-3 w-3" fill="currentColor" /> Demo
+        </button>
+        {lightbox}
+      </>
+    );
+  }
+
   if (!image) return null;
 
   const img = (
@@ -38,12 +103,12 @@ export function ProjectMedia({ name, image, video }: ProjectMediaProps) {
       alt={`${name} screenshot`}
       width={1600}
       height={900}
-      className="aspect-video w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+      className="aspect-video w-full object-cover object-top transition-transform duration-700 group-hover/media:scale-[1.02]"
     />
   );
 
   if (!video) {
-    return <div className="overflow-hidden border-b border-line">{img}</div>;
+    return <div className="overflow-hidden rounded-sm border border-line">{img}</div>;
   }
 
   return (
@@ -52,61 +117,18 @@ export function ProjectMedia({ name, image, video }: ProjectMediaProps) {
         type="button"
         onClick={() => setOpen(true)}
         aria-label={`Watch ${name} demo video`}
-        className="relative block w-full cursor-pointer overflow-hidden border-b border-line text-left"
+        className="group/media relative block w-full cursor-pointer overflow-hidden rounded-sm border border-line text-left"
       >
         {img}
-        <span className="absolute inset-0 flex items-center justify-center bg-black/30 transition-colors duration-300 group-hover:bg-black/45">
-          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white shadow-[0_8px_32px_-8px_var(--glow)] transition-transform duration-300 group-hover:scale-110">
-            <Play className="ml-0.5 h-6 w-6" fill="currentColor" />
+        <span className="absolute inset-0 bg-bg/20 transition-colors duration-500 group-hover/media:bg-bg/5" />
+        <span className="absolute bottom-0 left-0 flex items-center gap-3 bg-bg/85 px-4 py-3 backdrop-blur-sm">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-ink text-bg transition-transform duration-500 group-hover/media:scale-110">
+            <Play className="ml-0.5 h-3.5 w-3.5" fill="currentColor" />
           </span>
-        </span>
-        <span className="absolute bottom-3 right-3 rounded-full border border-line bg-surface/90 px-3 py-1 font-mono text-xs text-ink backdrop-blur-sm">
-          Watch demo · 2 min
+          <span className="text-label text-ink">Play demo — 2 min</span>
         </span>
       </button>
-
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm sm:p-8"
-            onClick={close}
-            role="dialog"
-            aria-modal="true"
-            aria-label={`${name} demo video`}
-          >
-            <motion.div
-              initial={{ scale: 0.96, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.96, opacity: 0 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              className="relative w-full max-w-5xl"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                type="button"
-                onClick={close}
-                aria-label="Close video"
-                className="absolute -top-11 right-0 flex h-9 w-9 items-center justify-center rounded-full border border-line bg-surface text-muted transition-colors hover:text-ink"
-              >
-                <X className="h-4 w-4" />
-              </button>
-              <video
-                controls
-                autoPlay
-                playsInline
-                preload="none"
-                poster={image}
-                src={video}
-                className="aspect-video w-full rounded-xl border border-line bg-black shadow-[0_32px_96px_-32px_rgba(0,0,0,0.9)]"
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {lightbox}
     </>
   );
 }
