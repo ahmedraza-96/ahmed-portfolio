@@ -38,6 +38,8 @@ export interface Project {
   tech: string[];
   /** Screenshot path inside /public (1600×900). Card renders it when set. */
   image?: string;
+  /** Narrated demo video path inside /public (H.264 MP4, 1080p). Adds a play button + lightbox on the card. */
+  video?: string;
   liveUrl?: string;
   /** Label for the liveUrl link. Defaults to "Live site" (e.g. "PyPI", "npm"). */
   liveLabel?: string;
@@ -243,6 +245,7 @@ export const projects: Project[] = [
       "Next.js",
     ],
     image: "/projects/novanet-eval-harness.png",
+    video: "/projects/novanet-demo.mp4",
     liveUrl: "https://ai-support-eval.vercel.app",
     repoUrl: "https://github.com/ahmedraza-96/ai-support-eval",
     featured: true,
@@ -262,6 +265,7 @@ export const projects: Project[] = [
       "PyPI",
     ],
     image: "/projects/psx-mcp-server.png",
+    video: "/projects/psx-mcp-demo.mp4",
     liveUrl: "https://pypi.org/project/psx-mcp-server/",
     liveLabel: "PyPI",
     repoUrl: "https://github.com/ahmedraza-96/psx-mcp-server",
@@ -274,6 +278,7 @@ export const projects: Project[] = [
       "An AI agent that conducts and evaluates mock interviews autonomously in Urdu and English, with an avatar-based interview mode. Built as my Final Year Project — deployed and live.",
     tech: ["Next.js", "Node.js", "OpenAI API", "REST APIs"],
     image: "/projects/convey-ai.png",
+    video: "/projects/convey-demo.mp4",
     liveUrl: "https://www.conveyai.live/",
     repoUrl: "https://github.com/ahmedraza-96/conveyai-backend",
     featured: true,
@@ -295,6 +300,7 @@ export const projects: Project[] = [
       "AWS EC2",
     ],
     image: "/projects/cognos.png",
+    video: "/projects/cognos-demo.mp4",
     liveUrl: "https://cognos-frontend.vercel.app",
     repoUrl: "https://github.com/ahmedraza-96/Cognos-Backend",
     featured: true,
@@ -306,6 +312,7 @@ export const projects: Project[] = [
       "Connects medicine donors with people in need. Includes an admin panel that moderates donations and user accounts before listings go live. Deployed and accessible online.",
     tech: ["React", "Node.js", "Express", "MongoDB"],
     image: "/projects/careshare.png",
+    video: "/projects/careshare-demo.mp4",
     liveUrl: "https://careshare-frontend.vercel.app/",
     repoUrl: "https://github.com/ahmedraza-96/Caresharebackend",
   },
@@ -316,6 +323,7 @@ export const projects: Project[] = [
       "Internal tool for tracking company IT assets and maintenance, with a React dashboard on a FastAPI and MySQL backend. Deployed and accessible online.",
     tech: ["FastAPI", "MySQL", "React.js", "REST APIs"],
     image: "/projects/it-inventory.png",
+    video: "/projects/it-inventory-demo.mp4",
     liveUrl: "https://it-inventory-app-main.vercel.app/",
     repoUrl: "https://github.com/ahmedraza-96/it_inventory_app-main",
   },

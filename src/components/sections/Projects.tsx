@@ -1,9 +1,9 @@
-import Image from "next/image";
 import { ArrowUpRight, Github, Lock } from "lucide-react";
 import { projects } from "@/data/portfolio";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { GlowCard } from "@/components/ui/GlowCard";
+import { ProjectMedia } from "@/components/ui/ProjectMedia";
 
 export function Projects() {
   return (
@@ -20,17 +20,11 @@ export function Projects() {
             >
               <GlowCard className="h-full rounded-2xl">
               <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface transition-all hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_16px_48px_-24px_var(--glow)]">
-                {project.image && (
-                  <div className="overflow-hidden border-b border-line">
-                    <Image
-                      src={project.image}
-                      alt={`${project.name} screenshot`}
-                      width={1600}
-                      height={900}
-                      className="aspect-video w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-                    />
-                  </div>
-                )}
+                <ProjectMedia
+                  name={project.name}
+                  image={project.image}
+                  video={project.video}
+                />
                 <div className="flex flex-1 flex-col p-7">
                 <div className="flex items-start justify-between gap-4">
                   <div>

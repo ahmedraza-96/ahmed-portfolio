@@ -1,0 +1,40 @@
+{
+  "scenes": {
+    "install": {
+      "type": "terminal",
+      "title": "getting started — psx-mcp-server",
+      "steps": [
+        { "cmd": "pip install psx-mcp-server", "typeMs": 34 },
+        { "out": "Successfully installed psx-mcp-server-0.1.0", "cls": "ok", "delayAfter": 900 },
+        { "delay": 600 },
+        { "cmd": "notepad %APPDATA%\\Claude\\claude_desktop_config.json", "typeMs": 30 },
+        { "delay": 500 },
+        { "out": "{\n  \"mcpServers\": {\n    \"psx\": {\n      \"command\": \"uvx\",\n      \"args\": [\"psx-mcp-server\"]\n    }\n  }\n}", "delayAfter": 1500 },
+        { "out": "Restart Claude Desktop — 11 PSX tools appear automatically.", "cls": "ok", "delayAfter": 800 }
+      ]
+    },
+    "quote": {
+      "type": "chat",
+      "title": "Claude Desktop — psx-mcp-server connected",
+      "steps": [
+        { "role": "user", "text": "What's HBL trading at right now on the Pakistan Stock Exchange?", "typeMs": 24 },
+        { "delay": 700 },
+        { "tool": "get_quote", "args": "\"HBL\"", "delayAfter": 1400 },
+        { "role": "assistant", "text": "Habib Bank Limited (HBL) is trading at PKR 303.32, up 5.28 rupees (+1.77%) on the day. It opened at 298.67 and has ranged between 298.30 and 304.90 today, with about 1.7 million shares traded. The trailing P/E is 7.09, and the 52-week range is 214.00 to 369.99.", "typeMs": 50 }
+      ]
+    },
+    "more": {
+      "type": "chat",
+      "title": "Claude Desktop — psx-mcp-server connected",
+      "steps": [
+        { "role": "user", "text": "How is the KSE-100 doing today? And any recent HBL dividends?", "typeMs": 24 },
+        { "delay": 700 },
+        { "tool": "get_indices", "args": "", "delayAfter": 1200 },
+        { "role": "assistant", "text": "The KSE-100 is at 175,285.78, up 1,766.97 points (+1.02%) today, after ranging between 173,870 and 176,701.", "typeMs": 50 },
+        { "delay": 500 },
+        { "tool": "get_dividends", "args": "\"HBL\"", "delayAfter": 1200 },
+        { "role": "assistant", "text": "On dividends: HBL declared a 60% interim cash dividend in April 2026 for Q1, right after a 60% final dividend for FY 2025 — that's PKR 6 per share each on a 10-rupee face value.", "typeMs": 50 }
+      ]
+    }
+  }
+}

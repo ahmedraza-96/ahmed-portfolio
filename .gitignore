@@ -34,3 +34,7 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+
+# demo video build artifacts
+/videos-raw/
+/scripts/demo-videos/work/

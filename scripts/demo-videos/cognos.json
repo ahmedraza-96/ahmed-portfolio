@@ -1,0 +1,71 @@
+{
+  "slug": "cognos",
+  "name": "Cognos",
+  "tagline": "Full-stack AI agent app — RAG, tools, auth, streaming",
+  "baseUrl": "https://cognos-frontend.vercel.app",
+  "links": {
+    "live": "https://cognos-frontend.vercel.app",
+    "repo": "https://github.com/ahmedraza-96/Cognos-Backend"
+  },
+  "out": "../../public/projects/cognos-demo.mp4",
+  "prewarmUrls": ["https://cognos-frontend.vercel.app"],
+  "segments": [
+    {
+      "id": "intro",
+      "narration": "Cognos. A full-stack AI agent that chats over your documents, searches the web, and picks its own tools.",
+      "actions": [{ "op": "gotoTemplate", "template": "intro" }]
+    },
+    {
+      "id": "problem",
+      "narration": "Chat with your documents apps are everywhere, but most of them are demos in disguise. One shared vector store for everyone, no real authentication, and answers that come from nowhere in particular. The moment you ask the practical questions — can each user have their own private documents, can it search the web when the documents aren't enough, can we run this on our own infrastructure — most of them fall apart completely.",
+      "actions": [
+        { "op": "goto", "url": "/", "settleMs": 2500 },
+        { "op": "wait", "ms": 5000 },
+        { "op": "scroll", "px": 250 }
+      ]
+    },
+    {
+      "id": "solution",
+      "narration": "Cognos is built like a real product. FastAPI on the back end with JWT authentication, and every user gets their own private Chroma vector store. The agent is built with LangChain and LangGraph, so it decides for itself when to search your documents, when to hit the web, and when to use a calculator. Chat history lives in Postgres, answers stream token by token over server sent events, and the whole thing is deployed on AWS EC2 with Terraform.",
+      "actions": [
+        { "op": "wait", "ms": 3000 },
+        { "op": "scroll", "px": 300 },
+        { "op": "wait", "ms": 5000 },
+        { "op": "scroll", "px": -400 }
+      ]
+    },
+    {
+      "id": "walkthrough-login",
+      "narration": "Here's the live app. It ships with a public demo account, so one click fills the credentials, and we're signed in with a JWT — into a workspace that is completely isolated from every other user.",
+      "actions": [
+        { "op": "goto", "url": "/", "settleMs": 2000 },
+        { "op": "click", "selector": "role=button|use demo credentials", "settleMs": 1200 },
+        { "op": "click", "selector": "role=button|log in", "settleMs": 2500 },
+        { "op": "wait", "ms": 2000 }
+      ]
+    },
+    {
+      "id": "walkthrough-docs",
+      "narration": "The documents page is where your knowledge base lives. Anything you upload here gets chunked, embedded, and stored in your own vector store — so the agent's answers are grounded in your files, not someone else's.",
+      "actions": [
+        { "op": "click", "selector": "a[href=\"/documents\"]", "settleMs": 2500 },
+        { "op": "wait", "ms": 5000 },
+        { "op": "click", "selector": "a[href=\"/chat\"]", "settleMs": 2000 }
+      ]
+    },
+    {
+      "id": "walkthrough-chat",
+      "narration": "Now the fun part. I'll ask the agent what tools it can use, and to work out fifteen percent of twenty four hundred. Watch what happens: it picks the calculator tool on its own, runs the math, and streams the answer back live, token by token. It's the same flow when a question needs your documents or a web search — the agent routes itself.",
+      "actions": [
+        { "op": "type", "selector": "placeholder=type a message", "text": "What tools can you use? Use the calculator to work out 15% of 2400.", "delay": 42 },
+        { "op": "press", "key": "Enter" },
+        { "op": "waitStableText", "maxMs": 35000 }
+      ]
+    },
+    {
+      "id": "closing",
+      "narration": "That's Cognos. RAG, tool use, authentication, streaming, and infrastructure as code, end to end. The code is on GitHub, and the demo account is live if you want to poke at it yourself.",
+      "actions": [{ "op": "gotoTemplate", "template": "outro" }]
+    }
+  ]
+}

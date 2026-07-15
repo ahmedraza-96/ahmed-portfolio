@@ -1,0 +1,74 @@
+{
+  "slug": "novanet",
+  "name": "NovaNet Eval Harness",
+  "tagline": "AI support agent with production-grade LLM evals",
+  "baseUrl": "https://ai-support-eval.vercel.app",
+  "links": {
+    "live": "https://ai-support-eval.vercel.app",
+    "repo": "https://github.com/ahmedraza-96/ai-support-eval"
+  },
+  "out": "../../public/projects/novanet-demo.mp4",
+  "prewarmUrls": ["https://ai-support-eval.vercel.app", "https://ai-support-eval.vercel.app/chat"],
+  "segments": [
+    {
+      "id": "intro",
+      "narration": "NovaNet Evals. An AI support agent wrapped in a production-grade evaluation pipeline, so every prompt change is measured before it ships.",
+      "actions": [{ "op": "gotoTemplate", "template": "intro" }]
+    },
+    {
+      "id": "problem",
+      "narration": "Here's a problem every team shipping LLM features runs into. You tweak a prompt, the answers look fine in a quick manual check, and you ship it. A week later users are getting worse answers, and nobody knows which change caused it. Manual spot checks simply don't scale. What you need is the thing we've always had for regular code: a test suite, and a CI gate that blocks regressions before they reach production.",
+      "actions": [
+        { "op": "goto", "url": "/", "settleMs": 2000 },
+        { "op": "wait", "ms": 4000 },
+        { "op": "scroll", "px": 300 }
+      ]
+    },
+    {
+      "id": "solution",
+      "narration": "NovaNet is a customer support agent built with FastAPI and LangGraph, running retrieval augmented generation over a support knowledge base with Groq's Llama three point three. But the interesting part is the eval harness around it. Every change is scored against a one hundred case golden dataset, and an LLM as judge grades each answer for correctness and groundedness. Results are cached by hash, so unchanged cases cost nothing to re-run. And the whole thing runs in GitHub Actions on every pull request.",
+      "actions": [
+        { "op": "scroll", "px": 350 },
+        { "op": "wait", "ms": 6000 },
+        { "op": "scroll", "px": 350 },
+        { "op": "wait", "ms": 6000 },
+        { "op": "scroll", "px": -500 }
+      ]
+    },
+    {
+      "id": "walkthrough-dashboard",
+      "narration": "This is the metrics dashboard, built with Next.js. At the top, the latest run's overall pass rate, average cost per case, and latency. Scrolling down, scores are broken out by category, so you can see exactly where the agent is strong and where it struggles.",
+      "actions": [
+        { "op": "goto", "url": "/", "settleMs": 2000 },
+        { "op": "wait", "ms": 5000 },
+        { "op": "scroll", "px": 500 }
+      ]
+    },
+    {
+      "id": "walkthrough-run",
+      "narration": "Clicking into a run shows the judge's verdict on every single case: the question, the agent's answer, and why it passed or failed. When a case regresses, this is where you find out — and in CI, that regression blocks the merge automatically.",
+      "actions": [
+        { "op": "scroll", "px": -600 },
+        { "op": "click", "selector": "a[href^=\"/runs/\"]", "settleMs": 2500 },
+        { "op": "wait", "ms": 4000 },
+        { "op": "scroll", "px": 700 }
+      ]
+    },
+    {
+      "id": "walkthrough-chat",
+      "narration": "And here is the agent itself, live. I'll ask it a real support question: my internet has been down since yesterday. The agent retrieves the relevant policy from the knowledge base and streams back a grounded answer with the exact steps to follow. This same endpoint is what the hundred case eval suite hits on every single run.",
+      "actions": [
+        { "op": "goto", "url": "/chat", "settleMs": 2000 },
+        { "op": "wait", "ms": 2000 },
+        { "op": "type", "selector": "placeholder=ask about plans", "text": "My internet has been down since yesterday. What should I do?", "delay": 50 },
+        { "op": "press", "key": "Enter" },
+        { "op": "waitStableText", "maxMs": 35000 }
+      ]
+    },
+    {
+      "id": "closing",
+      "narration": "So that's NovaNet. Not just another chatbot, but an agent with a real quality gate — measured, versioned, and safe to iterate on. The code is on GitHub, and the dashboard and the agent are both live if you want to try them yourself.",
+      "actions": [{ "op": "gotoTemplate", "template": "outro" }]
+    }
+  ]
+}

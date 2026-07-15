@@ -1,0 +1,70 @@
+{
+  "slug": "careshare",
+  "name": "CareShare",
+  "tagline": "Medicine donation platform — MERN stack",
+  "baseUrl": "https://careshare-frontend.vercel.app",
+  "links": {
+    "live": "https://careshare-frontend.vercel.app",
+    "repo": "https://github.com/ahmedraza-96/Caresharebackend"
+  },
+  "out": "../../public/projects/careshare-demo.mp4",
+  "prewarmUrls": ["https://careshare-frontend.vercel.app", "https://careshare-frontend.vercel.app/signin"],
+  "customActions": "careshare-actions.mjs",
+  "segments": [
+    {
+      "id": "intro",
+      "narration": "CareShare. A medicine donation platform connecting donors with people who can't afford their treatment.",
+      "actions": [{ "op": "gotoTemplate", "template": "intro" }]
+    },
+    {
+      "id": "problem",
+      "narration": "In Pakistan, an enormous amount of perfectly usable medicine goes to waste every year — left over from finished treatments, sitting in drawers until it expires. Meanwhile, patients a few kilometers away are skipping doses because they can't afford them. The two sides have no trusted way to find each other. And you can't just hand out medicine with no oversight — every donation needs to be checked before anyone can claim it.",
+      "actions": [
+        { "op": "goto", "url": "/", "settleMs": 2500 },
+        { "op": "wait", "ms": 5000 },
+        { "op": "scroll", "px": 400 }
+      ]
+    },
+    {
+      "id": "solution",
+      "narration": "CareShare closes that gap, with moderation built in from day one. It's a MERN stack platform — React on the front end, Node and Express on the API, MongoDB underneath. Donors list medicines they no longer need, recipients browse and request them, and nothing goes live until an admin has reviewed it. Role-based access keeps donors, recipients, and administrators in their own lanes, each with their own view of the platform.",
+      "actions": [
+        { "op": "wait", "ms": 3000 },
+        { "op": "scroll", "px": 400 },
+        { "op": "wait", "ms": 5000 },
+        { "op": "scroll", "px": 300 }
+      ]
+    },
+    {
+      "id": "walkthrough-recipient",
+      "narration": "Let's look at the live app. The sign-in page has one-click reviewer logins for every role — no signup needed. As a recipient, I can browse the verified donations, see each medicine with its quantity and expiry, and request what I need in a couple of clicks.",
+      "actions": [
+        { "op": "goto", "url": "/signin", "settleMs": 2000 },
+        { "op": "wait", "ms": 1500 },
+        { "op": "click", "selector": "role=button|recipient", "settleMs": 2000 },
+        { "op": "custom", "name": "dismissAlert" },
+        { "op": "goto", "url": "/available-medicines", "settleMs": 2500 },
+        { "op": "scroll", "px": 500 }
+      ]
+    },
+    {
+      "id": "walkthrough-admin",
+      "narration": "Now the admin side, because this is what makes the platform trustworthy. Every new donation lands in a moderation queue, and an admin approves or rejects it before it's ever visible to recipients. Incoming medicine requests get the same treatment, with a full history of what was approved, rejected, and delivered.",
+      "actions": [
+        { "op": "clearAuth" },
+        { "op": "goto", "url": "/signin", "settleMs": 2000 },
+        { "op": "click", "selector": "role=button|admin", "settleMs": 2000 },
+        { "op": "waitForUrl", "pattern": "admin", "maxMs": 30000, "settleMs": 1500 },
+        { "op": "custom", "name": "dismissAlert" },
+        { "op": "wait", "ms": 2500 },
+        { "op": "scroll", "px": 400 },
+        { "op": "click", "selector": "a[href=\"/medicinerequest\"]", "settleMs": 2500 }
+      ]
+    },
+    {
+      "id": "closing",
+      "narration": "CareShare is deployed and live — a simple idea with real social impact, built end to end on the MERN stack. The front end and the back end are both open source on GitHub, and the sign-in page has demo accounts for every role, so you can explore the whole flow yourself in under a minute.",
+      "actions": [{ "op": "gotoTemplate", "template": "outro" }]
+    }
+  ]
+}

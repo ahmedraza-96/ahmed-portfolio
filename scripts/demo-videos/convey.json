@@ -1,0 +1,71 @@
+{
+  "slug": "convey",
+  "name": "Convey AI",
+  "tagline": "Conversational AI interview agent — Urdu & English",
+  "baseUrl": "https://www.conveyai.live",
+  "links": {
+    "live": "https://www.conveyai.live",
+    "repo": "https://github.com/ahmedraza-96/conveyai-backend"
+  },
+  "out": "../../public/projects/convey-demo.mp4",
+  "prewarmUrls": ["https://www.conveyai.live", "https://www.conveyai.live/login"],
+  "segments": [
+    {
+      "id": "intro",
+      "narration": "Convey AI. Voice-based mock interviews with an AI interviewer, in both Urdu and English.",
+      "actions": [{ "op": "gotoTemplate", "template": "intro" }]
+    },
+    {
+      "id": "problem",
+      "narration": "Preparing for job interviews is genuinely hard when you have nobody to practice with. Mock interviews with real people are expensive and awkward to schedule, and for millions of candidates in Pakistan there's an extra gap — almost no tool lets you practice in Urdu. Reading lists of interview questions doesn't build the skill that actually matters: thinking on your feet and speaking your answers out loud, under a little bit of pressure.",
+      "actions": [
+        { "op": "goto", "url": "/", "settleMs": 2500 },
+        { "op": "wait", "ms": 5000 },
+        { "op": "scroll", "px": 400 }
+      ]
+    },
+    {
+      "id": "solution",
+      "narration": "Convey AI fixes that with an avatar-based AI interviewer that conducts and evaluates complete mock interviews. It was my final year project, built with Next.js on the front end, Node on the back end, and OpenAI's APIs driving the conversation. It speaks and understands both English and Urdu, tailors the questions to your resume and the job you're targeting, and scores every answer against a structured rubric.",
+      "actions": [
+        { "op": "wait", "ms": 3000 },
+        { "op": "scroll", "px": 450 },
+        { "op": "wait", "ms": 5000 },
+        { "op": "scroll", "px": 350 }
+      ]
+    },
+    {
+      "id": "walkthrough-login",
+      "narration": "Let's take the live app for a spin. There's a reviewer demo account, so no signup is needed. One click fills the credentials, and we're into the dashboard.",
+      "actions": [
+        { "op": "goto", "url": "/login", "settleMs": 2000 },
+        { "op": "click", "selector": "role=button|fill demo credentials", "settleMs": 1200 },
+        { "op": "click", "selector": "role=button|login", "settleMs": 1000 },
+        { "op": "waitForUrl", "pattern": "dashboard", "maxMs": 90000, "settleMs": 2500 }
+      ]
+    },
+    {
+      "id": "walkthrough-dashboard",
+      "narration": "The dashboard tracks your progress across practice sessions — score trends over time, so you can see whether your communication, your structure, and your confidence are actually improving from one mock interview to the next.",
+      "actions": [
+        { "op": "wait", "ms": 4000 },
+        { "op": "scroll", "px": 450 }
+      ]
+    },
+    {
+      "id": "walkthrough-results",
+      "narration": "Under practice, Convey generates interviews tailored to your own resume and a specific job description. And when an interview is finished, every answer is scored on a five dimension rubric, with evidence pulled straight from your transcript — so the feedback is specific, not generic.",
+      "actions": [
+        { "op": "goto", "url": "/dashboard/practice?type=personalized", "settleMs": 2500 },
+        { "op": "wait", "ms": 4000 },
+        { "op": "click", "selector": "role=button|view results", "nth": 5, "settleMs": 3000 },
+        { "op": "scroll", "px": 600 }
+      ]
+    },
+    {
+      "id": "closing",
+      "narration": "Convey AI is deployed and live at convey ai dot live — a complete product, from the voice conversation all the way to rubric-based evaluation. Try a mock interview yourself, in English or in Urdu.",
+      "actions": [{ "op": "gotoTemplate", "template": "outro" }]
+    }
+  ]
+}

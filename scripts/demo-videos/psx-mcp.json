@@ -1,0 +1,64 @@
+{
+  "slug": "psx-mcp",
+  "name": "PSX MCP Server",
+  "tagline": "Live Pakistan Stock Exchange data for LLM agents",
+  "baseUrl": "https://github.com/ahmedraza-96/psx-mcp-server",
+  "links": {
+    "live": "https://pypi.org/project/psx-mcp-server/",
+    "repo": "https://github.com/ahmedraza-96/psx-mcp-server"
+  },
+  "out": "../../public/projects/psx-mcp-demo.mp4",
+  "segments": [
+    {
+      "id": "intro",
+      "narration": "The PSX MCP Server. Live Pakistan Stock Exchange data for Claude, and for any LLM agent.",
+      "actions": [{ "op": "gotoTemplate", "template": "intro" }]
+    },
+    {
+      "id": "problem",
+      "narration": "Language models are great at reasoning about markets, but they're completely blind to them. Ask an AI assistant for a current stock quote on the Pakistan Stock Exchange, and you'll get stale training data or a polite refusal. There was simply no clean bridge between the PSX and this new generation of AI agents — no way for Claude to pull a live quote, check an index, or read a company's announcements.",
+      "actions": [
+        { "op": "goto", "url": "https://github.com/ahmedraza-96/psx-mcp-server", "settleMs": 3000 },
+        { "op": "wait", "ms": 4000 },
+        { "op": "scroll", "px": 500 }
+      ]
+    },
+    {
+      "id": "solution",
+      "narration": "The Model Context Protocol is that bridge, and PSX MCP Server implements it for the Pakistan Stock Exchange. It's open-source Python built on FastMCP, with httpx and BeautifulSoup reading the public PSX data portal. It exposes eleven tools: live quotes, intraday and end of day history, indices like the KSE one hundred, company fundamentals, dividends, and announcements. Behind it: seventy-eight tests, CI across four Python versions, and a published package on PyPI.",
+      "actions": [
+        { "op": "scroll", "px": 600 },
+        { "op": "wait", "ms": 4000 },
+        { "op": "goto", "url": "https://pypi.org/project/psx-mcp-server/", "settleMs": 3000 },
+        { "op": "wait", "ms": 3000 },
+        { "op": "scroll", "px": 300 }
+      ]
+    },
+    {
+      "id": "walkthrough-install",
+      "narration": "Getting it running takes about a minute. Install it from PyPI, or skip even that — point Claude Desktop at it with uvx. Add this small snippet to your config file, restart Claude, and all eleven tools just appear.",
+      "actions": [
+        { "op": "gotoTemplate", "template": "terminal", "dataFile": "psx-replay-data.json", "scene": "install" }
+      ]
+    },
+    {
+      "id": "walkthrough-quote",
+      "narration": "Here's what that looks like in practice. I ask Claude what HBL — Habib Bank — is trading at. It calls the get quote tool and comes back with the live price: three hundred three rupees, up about one point eight percent, along with the day's range, volume, and the P E ratio. Real numbers, fetched from the exchange the moment you ask.",
+      "actions": [
+        { "op": "gotoTemplate", "template": "terminal", "dataFile": "psx-replay-data.json", "scene": "quote" }
+      ]
+    },
+    {
+      "id": "walkthrough-more",
+      "narration": "And it's the same story across the whole market. Ask about the KSE one hundred index, and Claude pulls the live value. Ask about dividends, and it reads HBL's actual payout history — the interim dividend, the final dividend, and the book closure dates. Every answer is grounded in data the server just fetched.",
+      "actions": [
+        { "op": "gotoTemplate", "template": "terminal", "dataFile": "psx-replay-data.json", "scene": "more" }
+      ]
+    },
+    {
+      "id": "closing",
+      "narration": "PSX MCP Server is open source, on PyPI and GitHub. If you're building agents that need Pakistani market data, it's one uvx command away.",
+      "actions": [{ "op": "gotoTemplate", "template": "outro" }]
+    }
+  ]
+}

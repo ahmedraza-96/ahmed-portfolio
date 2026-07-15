@@ -1,0 +1,73 @@
+{
+  "slug": "it-inventory",
+  "name": "IT Inventory Management System",
+  "tagline": "Asset tracking for company IT",
+  "baseUrl": "https://it-inventory-app-main.vercel.app",
+  "links": {
+    "live": "https://it-inventory-app-main.vercel.app",
+    "repo": "https://github.com/ahmedraza-96/it_inventory_app-main"
+  },
+  "out": "../../public/projects/it-inventory-demo.mp4",
+  "prewarmUrls": ["https://it-inventory-app-main.vercel.app"],
+  "segments": [
+    {
+      "id": "intro",
+      "narration": "An IT inventory management system. Asset tracking, complaints, and maintenance for a company's entire hardware fleet.",
+      "actions": [{ "op": "gotoTemplate", "template": "intro" }]
+    },
+    {
+      "id": "problem",
+      "narration": "Most companies track their IT assets in a spreadsheet somewhere, and it works — right up until it doesn't. Nobody knows who has which laptop. Warranties expire silently. Maintenance history lives in someone's inbox. And when an employee leaves, half their equipment quietly vanishes into a cupboard. For an IT department that means hours of detective work every month, and real money leaking away through unaccounted hardware.",
+      "actions": [
+        { "op": "goto", "url": "/", "settleMs": 2500 },
+        { "op": "wait", "ms": 6000 },
+        { "op": "scroll", "px": 200 }
+      ]
+    },
+    {
+      "id": "solution",
+      "narration": "This system replaces the spreadsheet with a proper internal tool: a React dashboard on top of a FastAPI backend with MySQL underneath. Every asset has an owner, a status, and a full maintenance trail. Complaints flow through a real approval chain — from employee, to assistant manager, to manager — and there's role-based sign-in for six different roles, so everyone from admin to vendor sees exactly what they should and nothing more.",
+      "actions": [
+        { "op": "wait", "ms": 4000 },
+        { "op": "scroll", "px": -200 },
+        { "op": "wait", "ms": 4000 }
+      ]
+    },
+    {
+      "id": "walkthrough-dashboard",
+      "narration": "Let's sign in as an admin — the demo role chips fill the credentials with one click. The dashboard gives the whole picture at a glance: total employees, assets, active complaints, and vendors, plus a live breakdown of complaint status and how assets are split between assigned, available, and under maintenance.",
+      "actions": [
+        { "op": "click", "selector": "role=button|admin", "settleMs": 1200 },
+        { "op": "click", "selector": "role=button|sign in", "settleMs": 2500 },
+        { "op": "waitForUrl", "pattern": "admin", "maxMs": 30000, "settleMs": 2000 },
+        { "op": "wait", "ms": 4000 },
+        { "op": "scroll", "px": 450 }
+      ]
+    },
+    {
+      "id": "walkthrough-assets",
+      "narration": "Asset management is the heart of it. Every laptop, monitor, and printer is registered here with its assignment status, so handing equipment to a new employee — or recovering it when they leave — is a record, not a memory.",
+      "actions": [
+        { "op": "scroll", "px": -600 },
+        { "op": "click", "selector": "role=button|asset management", "settleMs": 2500 },
+        { "op": "wait", "ms": 4000 },
+        { "op": "scroll", "px": 350 }
+      ]
+    },
+    {
+      "id": "walkthrough-complaints",
+      "narration": "And complaint management closes the loop. An employee reports a flickering monitor or an overheating laptop, the complaint moves through the approval chain, and its whole history stays attached — from open, to forwarded, to resolved and closed.",
+      "actions": [
+        { "op": "scroll", "px": -500 },
+        { "op": "click", "selector": "role=button|complaint management", "settleMs": 2500 },
+        { "op": "wait", "ms": 4000 },
+        { "op": "scroll", "px": 350 }
+      ]
+    },
+    {
+      "id": "closing",
+      "narration": "It's a real internal tool solving a real operations problem — deployed, live, and built end to end with React, FastAPI, and MySQL. The code is on GitHub if you'd like a closer look.",
+      "actions": [{ "op": "gotoTemplate", "template": "outro" }]
+    }
+  ]
+}
