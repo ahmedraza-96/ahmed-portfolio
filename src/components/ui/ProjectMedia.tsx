@@ -106,7 +106,7 @@ export function ProjectMedia({ name, image, video }: ProjectMediaProps) {
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-ink text-bg transition-transform duration-500 group-hover/media:scale-110">
             <Play className="ml-0.5 h-3.5 w-3.5" fill="currentColor" />
           </span>
-          <span className="text-label text-ink">Play demo — 90 sec</span>
+          <span className="text-label text-ink">Play demo — 2 min</span>
         </span>
       </button>
       {lightbox}
