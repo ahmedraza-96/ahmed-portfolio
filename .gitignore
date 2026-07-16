@@ -38,3 +38,4 @@ next-env.d.ts
 # demo video build artifacts
 /videos-raw/
 /scripts/demo-videos/work/
+/public/projects/linkedin-projects.txt
