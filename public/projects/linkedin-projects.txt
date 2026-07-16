@@ -1,0 +1,166 @@
+LINKEDIN PROJECTS — COPY-PASTE PACK
+====================================
+
+────────────────────────────────────────
+HEADLINE (tagline under your name)
+────────────────────────────────────────
+AI Engineer — RAG, AI Agents & LLM Evals | Python · FastAPI · Next.js | Open-source MCP author (PyPI) | BSAI @ FAST'26
+
+Shorter alternative:
+AI Engineer | RAG · AI Agents · LLM Evals | Open-source MCP author | FAST'26
+
+
+────────────────────────────────────────
+ABOUT SECTION
+────────────────────────────────────────
+I build and ship production LLM systems end to end — RAG pipelines, tool-using agents, and the evaluation harnesses that keep them honest.
+
+Most recently I was an AI Engineer at HashOne Global (Jul 2025 – Jun 2026), where I built AI chatbots and LangGraph agents served through FastAPI, designed RAG pipelines over vector databases, and deployed everything with Docker and CI/CD on AWS.
+
+Things I've shipped that you can try right now:
+
+• psx-mcp-server — an open-source Model Context Protocol server on PyPI that gives Claude and other LLM agents live Pakistan Stock Exchange data. 10 tools, 78 tests, CI across 8 platform/Python combinations. One command to run: uvx psx-mcp-server
+
+• NovaNet Eval Harness — a support RAG agent wrapped in a real evaluation pipeline: 100-case golden dataset, LLM-as-judge grading, and a CI quality gate that blocks prompt regressions before merge. The baseline evals caught a prompt-injection bug before launch.
+
+• Convey AI — my final-year project: an AI agent that conducts and scores mock interviews in Urdu and English, live at conveyai.live.
+
+I hold a BS in Artificial Intelligence from FAST-NUCES (2022–2026). My stack: Python, TypeScript, FastAPI, Next.js, LangChain/LangGraph, Postgres, Docker, AWS.
+
+I'm currently open to AI engineering roles (remote-friendly). If you're building something with LLMs and want someone who ships — and measures whether it actually works — let's talk: ahmedrz.amjad@gmail.com
+
+
+How to add each project (repeat 6 times, ~2 min each):
+1. On your profile, click "Add profile section" -> "Recommended" -> "Add projects"
+2. Paste the fields below.
+3. Under "Media", click "Add media" -> upload the screenshot file named for that
+   project from this folder: D:\projects\ahmed-portfolio\public\projects\
+4. Save.
+
+Order them as listed (strongest first). Descriptions are within LinkedIn's
+limits and written in first person.
+
+
+────────────────────────────────────────
+PROJECT 1
+────────────────────────────────────────
+Project name:
+NovaNet Eval Harness — AI support agent with production-grade LLM evals
+
+Description:
+A customer-support RAG agent wrapped in a full evaluation pipeline: a 100-case golden dataset, deterministic assertions plus LLM-as-judge grading, hash-keyed response caching, and a GitHub Actions quality gate that blocks bad prompt changes before they merge. Baseline evals caught an intermittent prompt-injection vulnerability before launch. Ships with a Next.js metrics dashboard showing run trends and per-case judge verdicts.
+
+Tech: FastAPI, LangGraph, Groq Llama 3.3, Chroma, LLM-as-judge, GitHub Actions, Next.js, AWS EC2.
+
+Project URL:
+https://ai-support-eval.vercel.app
+
+Skills to add: LangGraph · FastAPI · LLM Evaluation · Retrieval-Augmented Generation (RAG) · CI/CD
+
+Media file: novanet-eval-harness.png
+
+
+────────────────────────────────────────
+PROJECT 2
+────────────────────────────────────────
+Project name:
+PSX MCP Server — Published Model Context Protocol server for LLM agents
+
+Description:
+An open-source MCP server that gives Claude and other LLM agents live Pakistan Stock Exchange data — quotes, indices (KSE-100), company fundamentals, dividends, and announcements — through 10 tool-callable endpoints. Built test-first with 78 tests, CI across Python 3.10–3.13 on Linux and Windows, and published to PyPI with trusted publishing, so anyone can run it with a single command: uvx psx-mcp-server.
+
+Tech: Python, MCP (FastMCP), httpx, BeautifulSoup, pytest, GitHub Actions.
+
+Project URL:
+https://pypi.org/project/psx-mcp-server/
+
+Skills to add: Model Context Protocol (MCP) · Python · AI Agents · Test-Driven Development · Open-Source Development
+
+Media file: psx-mcp-server.png   (alternative: psx-mcp-server-github.png)
+
+
+────────────────────────────────────────
+PROJECT 3
+────────────────────────────────────────
+Project name:
+Convey AI — Conversational AI interview agent (Final Year Project)
+
+Description:
+An AI agent that conducts and evaluates mock interviews autonomously in Urdu and English, with an avatar-based interview mode. Built as my Final Year Project at FAST-NUCES — deployed and live at conveyai.live.
+
+Tech: Next.js, Node.js, OpenAI API, REST APIs.
+
+Project URL:
+https://www.conveyai.live/
+
+Skills to add: OpenAI API · Next.js · Node.js · Conversational AI
+
+Media file: convey-ai.png
+
+
+────────────────────────────────────────
+PROJECT 4
+────────────────────────────────────────
+Project name:
+Cognos — Full-stack AI agent app (RAG + tools)
+
+Description:
+Chat with a tool-using AI agent over your own documents, with built-in web search, a calculator, and allowlisted API calls. JWT authentication, per-user Chroma vector stores, Postgres-backed chat memory, and token-by-token response streaming over SSE. Deployed on AWS EC2, provisioned with Terraform. A public demo account is available on the login page.
+
+Tech: FastAPI, LangChain/LangGraph, Chroma, PostgreSQL, Next.js, SSE, Terraform, AWS EC2.
+
+Project URL:
+https://cognos-frontend.vercel.app
+
+Skills to add: LangChain · Retrieval-Augmented Generation (RAG) · PostgreSQL · Terraform · Amazon Web Services (AWS)
+
+Media file: cognos.png
+
+
+────────────────────────────────────────
+PROJECT 5
+────────────────────────────────────────
+Project name:
+CareShare — Medicine donation platform (MERN)
+
+Description:
+Connects medicine donors with people in need. Includes an admin panel that moderates donations and user accounts before listings go live. Deployed and accessible online.
+
+Tech: React, Node.js, Express, MongoDB.
+
+Project URL:
+https://careshare-frontend.vercel.app/
+
+Skills to add: React.js · Node.js · Express.js · MongoDB
+
+Media file: careshare.png
+
+
+────────────────────────────────────────
+PROJECT 6
+────────────────────────────────────────
+Project name:
+IT Complaint & Inventory Management System
+
+Description:
+An internal tool for tracking company IT assets and managing support complaints, with role-based access (admin, manager, employee, vendor), an analytics dashboard, and simple status reports. React dashboard on a FastAPI and MySQL backend. Demo reviewer accounts are available on the sign-in page.
+
+Tech: FastAPI, MySQL, React.js, REST APIs.
+
+Project URL:
+https://it-inventory-app-main.vercel.app/
+
+Skills to add: FastAPI · MySQL · React.js · REST APIs
+
+Media file: it-inventory.png
+
+
+────────────────────────────────────────
+BONUS TIP — FEATURED SECTION
+────────────────────────────────────────
+The Featured section shows large image cards at the top of your profile and
+gets far more views than Projects. Consider adding your top 2 there as well:
+- "Add profile section" -> "Recommended" -> "Add featured" -> "Add a link"
+  -> paste https://ai-support-eval.vercel.app  (thumbnail auto-generates)
+- Repeat with https://pypi.org/project/psx-mcp-server/
+- You can also feature your portfolio: https://ahmed-portfolio-jet.vercel.app
