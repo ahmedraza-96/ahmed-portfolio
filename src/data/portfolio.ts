@@ -69,7 +69,7 @@ export const site = {
   name: "Ahmed Raza",
   role: "AI Engineer",
   /** Used in <title>, OpenGraph and JSON-LD. Set to the deployed domain. */
-  url: "https://ahmed-portfolio-jet.vercel.app",
+  url: "https://ahmedraza.is-a.dev",
   title: "Ahmed Raza — AI Engineer",
   description:
     "AI Engineer in Karachi, Pakistan. I build and ship complete web applications with Next.js, React and FastAPI, plus production AI features — RAG pipelines, chatbots and tool-using agents.",
